@@ -15,14 +15,13 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_one :purchase
+- has_many :purchases
 
 ## itemsテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
 | name | string | null: false |
-| image | text | null: false |
 | descritption | text | null: false |
 | price | integer | null: false |
 | category_id | integer | null: false |
@@ -43,7 +42,7 @@
 | id(PK) | integer | null: false |
 | text | text | null: false |
 | user(FK) | references | null: false, foreign_key: true |
-| items(FK) | references | null: false, foreign_key: true |
+| item(FK) | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -54,7 +53,7 @@
 |-|-|-|
 | id(PK) | integer | null: false |
 | user(FK) | references | null: false, foreign_key: true |
-| items(FK) | references | null: false, foreign_key: true |
+| item(FK) | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :delivery_address
@@ -71,7 +70,7 @@
 | block | string | null: false |
 | building_name | string ||
 | phone_number | string | null: false |
-| purchase(FK) | integer | null: false, foreign_key: true |
+| purchase(FK) | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
