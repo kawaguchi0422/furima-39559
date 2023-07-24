@@ -15,13 +15,14 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_one :purchases
+- has_one :purchase
 
 ## itemsテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
 | name | string | null: false |
+| image | text | null: false |
 | descritption | text | null: false |
 | price | integer | null: false |
 | category_id | integer | null: false |
@@ -32,8 +33,8 @@
 | user(FK) | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :items
-- has_one :purchases
+- has_many :comments
+- has_one :purchase
 - belongs_to :user
 
 ## commentsテーブル
@@ -46,9 +47,9 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
-## purchaseテーブル
+## purchasesテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
@@ -58,19 +59,19 @@
 ### Association
 - has_one :delivery_address
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 
-## delivery_addressテーブル
+## delivery_addressesテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
-| postal_code | text | null: false |
-| prefecture | text | null: false |
-| city | text | null: false |
-| block | text | null: false |
-| building_name | text | null: true |
-| phone_number | text | null: false |
+| postal_code | string | null: false |
+| prefecture | string | null: false |
+| city | string | null: false |
+| block | string | null: false |
+| building_name | string ||
+| phone_number | string | null: false |
 | purchase(FK) | integer | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
