@@ -14,6 +14,8 @@
 
 ### Association
 - has_many :items
+- has_many :comments
+- has_one :purchases
 
 ## itemsテーブル
 | Column | Type | Option |
@@ -30,4 +32,46 @@
 | user(FK) | references | null: false, foreign_key: true |
 
 ### Association
+- has_many :items
+- has_one :purchases
 - belongs_to :user
+
+
+## commentsテーブル
+| Column | Type | Option |
+|-|-|-|
+| id(PK) | integer | null: false |
+| text | text | null: false |
+| user(FK) | references | null: false, foreign_key: true |
+| items(FK) | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :items
+
+## purchaseテーブル
+| Column | Type | Option |
+|-|-|-|
+| id(PK) | integer | null: false |
+| user(FK) | references | null: false, foreign_key: true |
+| items(FK) | references | null: false, foreign_key: true |
+
+### Association
+- has_one :delivery_address
+- belongs_to :user
+- belongs_to :items
+
+## delivery_addressテーブル
+| Column | Type | Option |
+|-|-|-|
+| id(PK) | integer | null: false |
+| postal_code | string | null: false |
+| prefecture | text | null: false |
+| city | integer | null: false |
+| block | integer | null: false |
+| building_name | integer | null: true |
+| phone_number | integer | null: false |
+| purchase(FK) | integer | null: false, foreign_key: true |
+
+### Association
+- belongs_to :purchases
