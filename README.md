@@ -36,7 +36,6 @@
 - has_one :purchases
 - belongs_to :user
 
-
 ## commentsテーブル
 | Column | Type | Option |
 |-|-|-|
@@ -65,12 +64,12 @@
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
-| postal_code | string | null: false |
+| postal_code | text | null: false |
 | prefecture | text | null: false |
-| city | integer | null: false |
-| block | integer | null: false |
-| building_name | integer | null: true |
-| phone_number | integer | null: false |
+| city | text | null: false |
+| block | text | null: false |
+| building_name | text | null: true |
+| phone_number | text | null: false |
 | purchase(FK) | integer | null: false, foreign_key: true |
 
 ### Association
