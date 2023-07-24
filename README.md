@@ -14,7 +14,6 @@
 
 ### Association
 - has_many :items
-- has_many :comments
 - has_many :purchases
 
 ## itemsテーブル
@@ -32,21 +31,8 @@
 | user(FK) | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :comments
 - has_one :purchase
 - belongs_to :user
-
-## commentsテーブル
-| Column | Type | Option |
-|-|-|-|
-| id(PK) | integer | null: false |
-| text | text | null: false |
-| user(FK) | references | null: false, foreign_key: true |
-| item(FK) | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :user
-- belongs_to :item
 
 ## purchasesテーブル
 | Column | Type | Option |
@@ -65,7 +51,7 @@
 |-|-|-|
 | id(PK) | integer | null: false |
 | postal_code | string | null: false |
-| prefecture | string | null: false |
+| prefecture | integer | null: false |
 | city | string | null: false |
 | block | string | null: false |
 | building_name | string ||
