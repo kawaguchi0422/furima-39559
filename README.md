@@ -14,7 +14,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## itemsテーブル
 | Column | Type | Option |
@@ -31,10 +31,10 @@
 | user(FK) | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :purchase
+- has_one :order
 - belongs_to :user
 
-## purchasesテーブル
+## ordersテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
@@ -42,11 +42,11 @@
 | item(FK) | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :delivery_address
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
-## delivery_addressesテーブル
+## addressesテーブル
 | Column | Type | Option |
 |-|-|-|
 | id(PK) | integer | null: false |
@@ -56,7 +56,7 @@
 | block | string | null: false |
 | building_name | string ||
 | phone_number | string | null: false |
-| purchase(FK) | references | null: false, foreign_key: true |
+| order(FK) | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase
+- belongs_to :order
