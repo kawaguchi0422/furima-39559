@@ -3,7 +3,7 @@ lock "3.17.3"
 
 set :application, "furima-39559"
 
-set :repo_url, "git@example.com:kawaguchi0422/furima-39559.git"
+set :repo_url, "git@github.com:kawaguchi0422/furima-39559.git"
 
 
 
