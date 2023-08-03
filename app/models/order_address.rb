@@ -4,11 +4,10 @@ class OrderAddress
   attr_accessor :postal_code, :prefecture_id, :city, :block, :building_name, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :postal_code
     validates :prefecture_id
     validates :city
     validates :block
-    validates :phone_number
+    validates :phone_number, format: {with: /\A[0-9]{10,11}\z/ }
     validates :token
   end
 

@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :sold
   before_action :set_public_key, only: [:index, :create]
-  
+  before_action :items_user
+
   def index
     @order_address = OrderAddress.new
   end
@@ -26,6 +27,9 @@ class OrdersController < ApplicationController
 
   def sold
     @item = Item.find(params[:item_id])
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 
   def pay_item
@@ -38,6 +42,13 @@ class OrdersController < ApplicationController
   end
 
   def set_public_key
-    gon.set_public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
   end
+
+  def items_user
+    if current_user.id == @item.user.id
+      redirect_to root_path
+    end
+  end
+
 end
