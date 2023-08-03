@@ -8,6 +8,8 @@ class OrderAddress
     validates :block
     validates :phone_number, format: { with: /\A[0-9]{10,11}\z/ }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   # 数字3桁、ハイフン、数字4桁の並びのみ許可する
