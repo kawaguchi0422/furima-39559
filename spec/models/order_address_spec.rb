@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
-  
   describe '購入者情報の保存' do
     before do
       user = FactoryBot.create(:user)
@@ -29,7 +28,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeは「3桁ハイフン4桁」の半角文字列のみ保存可能なこと' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idが空だと購入できない' do
         @order_address.prefecture_id = ''
@@ -49,17 +48,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberは9桁以下だと購入できない' do
         @order_address.phone_number = '123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberは12桁以上だと購入できない' do
         @order_address.phone_number = '123456789123'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberは半角数字以外が含まれている場合だと購入できない' do
         @order_address.phone_number = '090-1234'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'cityが空だと購入できない' do
         @order_address.city = ''
